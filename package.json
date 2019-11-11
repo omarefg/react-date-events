@@ -1,8 +1,8 @@
 {
   "name": "@omarefg/react-date-events",
   "version": "0.1.0",
-  "description": "React component to add a calendar and date events.",
-  "main": "lib/react-date-events.js",
+  "description": "React component to create a calendar and add reminders to it.",
+  "main": "lib/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.dev.js",
     "build": "rm -rf ./lib && webpack --mode production",
