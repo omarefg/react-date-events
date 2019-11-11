@@ -5,7 +5,7 @@ React component to create a calendar and add reminders to it.
 
 First you'll need to download the project.
 
-``Git clone git@github.com:omarefg/react-date-events.git``
+``git clone git@github.com:omarefg/react-date-events.git``
 
 Installation:
 
