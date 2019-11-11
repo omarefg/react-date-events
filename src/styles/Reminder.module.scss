@@ -1,0 +1,53 @@
+@import './Lib.scss';
+
+.reminder__container {
+    display: flex;
+    align-items: center;
+    font-family: $font-family;
+    padding-bottom: 20px;
+
+    .reminder__delete-button {
+        margin-right: 10px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .reminder__inputs-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .reminder__inputs-container__superior {
+        display: flex;
+        width: 100%;
+    }
+
+    .reminder__colors-container {
+        align-items: center;
+        display: grid;
+        grid-template-columns: 35% 55%;
+        min-height: 50px;
+    }
+
+    .reminder__color-button--container {
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        align-self: center;
+    }
+
+    .reminder__date-container {
+        margin: 8px 0;
+
+        p {
+            margin: 4px 0;
+        }
+    }
+
+}
+
+.reminder__container + .reminder__container {
+    border-top: 1px solid white;
+}

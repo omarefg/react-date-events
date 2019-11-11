@@ -1,0 +1,49 @@
+@import './Lib.scss';
+
+.reminder-area__container {
+    min-width: 300px;
+    padding: 16px;
+    background-color: #2f74b5;
+    color: white;
+    position: relative;
+    font-family: $font-family;
+
+    .reminder-area__title {
+        padding: 32px;
+        text-align: left;
+        user-select: none;
+
+        h1, h3 {
+            margin: 5px 0;
+        }
+    }
+
+    .reminder-area__add-button {
+        position: absolute;
+        bottom: 0;
+        right: -1.25em;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        outline: none;
+        z-index: 50;
+    }
+
+    .reminder-area__close-button {
+        fill: #ffffff;
+        background: none;
+        border: none;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .reminder-area__reminders-container {
+        height: 60vh;
+        max-height: 700px;
+        overflow-y: auto;
+    }
+}
