@@ -9,9 +9,9 @@ const useMonthDays = (month, year) => {
     const used = firstDay + daysInMonth;
     const weeksCount = Math.ceil(used / 7);
     const monthDays = [];
-    const lastMonth = month - 1;
+    const lastMonth = month > 0 ? month - 1 : 11;
     const daysInLastMonth = 32 - new Date(year, lastMonth, 32).getDate();
-    const nextMonth = month + 1;
+    const nextMonth = month < 11 ? month + 1 : 0;
     let date = 0;
     let nextMonthDay = 1;
 

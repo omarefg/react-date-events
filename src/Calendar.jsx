@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider } from '@material-ui/core';
 import Container from './components/Container';
@@ -28,13 +28,36 @@ const Calendar = (props) => {
     cities,
   } = props;
 
+  const [internActualYear, setInternActualYear] = useState(actualYear);
+  const [internActualMonth, setInternActualMonth] = useState(actualMonth);
+
+  const nextMonthHandler = () => {
+    let nextMonth = internActualMonth + 1;
+    if (internActualMonth > 10) {
+      nextMonth = 0;
+      const nextYear = internActualYear + 1;
+      setInternActualYear(nextYear);
+    }
+    setInternActualMonth(nextMonth);
+  };
+
+  const prevMonthHandler = () => {
+    let prevMonth = internActualMonth - 1;
+    if (internActualMonth < 1) {
+      prevMonth = 11;
+      const prevYear = internActualYear - 1;
+      setInternActualYear(prevYear);
+    }
+    setInternActualMonth(prevMonth);
+  };
+
   return (
     <MuiThemeProvider
       theme={theme}
     >
       <Container
-        actualYear={actualYear}
-        actualMonth={actualMonth}
+        actualYear={internActualYear}
+        actualMonth={internActualMonth}
         weekDays={weekDays}
         hourSelectValues={hourSelectValues}
         selectedDay={selectedDay}
@@ -53,6 +76,8 @@ const Calendar = (props) => {
         onReminderDateChange={onReminderDateChange}
         cities={cities}
         includeWeather={includeWeather}
+        nextMonthHandler={nextMonthHandler}
+        prevMonthHandler={prevMonthHandler}
       />
     </MuiThemeProvider>
   );

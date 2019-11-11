@@ -4,3 +4,28 @@
     border-spacing: 0px;
     font-family: $font-family;
 }
+
+.month__menu-container {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background: #2f74b5;
+    align-items: center;
+    padding: 0 16px;
+
+    button {
+        outline: none;
+        background: none;
+        border: 1px solid white;
+        height: 2.5em;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    h3 {
+        color: white;
+        font-weight: bold;
+    }
+}

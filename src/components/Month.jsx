@@ -14,57 +14,85 @@ const Month = (props) => {
     onDayClick,
     selectedDay,
     reminders,
+    nextMonthHandler,
+    prevMonthHandler,
+    months,
   } = props;
 
   const calendarDays = useMonthDays(actualMonth, actualYear);
 
   return (
-    <table
-      className={styles.container__table}
-    >
-      <thead>
-        <WeekDays
-          weekDays={weekDays}
-        />
-      </thead>
-      <tbody>
-        {calendarDays.map(({ id, days }) => (
-          <tr
-            key={id}
-          >
-            {days.map((day) => {
-              const {
-                id: dayId,
-                value,
-                weekDay,
-                isOtherMonth,
-                month: dayMonth,
-                year: dayYear,
-                date: dayDate,
-              } = day;
+    <div>
+      <div
+        className={styles['month__menu-container']}
+      >
+        <button
+          type="button"
+          onClick={prevMonthHandler}
+        >
+          Previous Month
+        </button>
+        <h3>
+          {months[actualMonth]}
+          {' '}
+          -
+          {' '}
+          {actualYear}
+        </h3>
+        <button
+          type="button"
+          onClick={nextMonthHandler}
+        >
+          Next Month
+        </button>
+      </div>
+      <table
+        className={styles.container__table}
+      >
+        <thead>
+          <WeekDays
+            weekDays={weekDays}
+          />
+        </thead>
+        <tbody>
+          {calendarDays.map(({ id, days }) => (
+            <tr
+              key={id}
+            >
+              {days.map((day) => {
+                const {
+                  id: dayId,
+                  value,
+                  weekDay,
+                  isOtherMonth,
+                  month: dayMonth,
+                  year: dayYear,
+                  date: dayDate,
+                } = day;
 
-              return (
-                <Day
-                  key={dayId}
-                  weekDay={weekDay}
-                  isOtherMonth={isOtherMonth}
-                  onDayClick={onDayClick}
-                  id={dayId}
-                  month={dayMonth}
-                  year={dayYear}
-                  date={dayDate}
-                  selectedDay={selectedDay}
-                  day={value}
-                  reminders={reminders
-                    .filter((reminder) => reminder.date.getTime() === dayDate.getTime())
-                    .sort((a, b) => new Date(a.hour) - new Date(b.hour))}
-                />
-              );
-            })}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+                return (
+                  <Day
+                    key={dayId}
+                    weekDay={weekDay}
+                    isOtherMonth={isOtherMonth}
+                    onDayClick={onDayClick}
+                    id={dayId}
+                    month={dayMonth}
+                    year={dayYear}
+                    date={dayDate}
+                    selectedDay={selectedDay}
+                    day={value}
+                    reminders={reminders
+                      .filter((reminder) => reminder.date.getTime() === dayDate.getTime())
+                      .sort((a, b) => new Date(a.hour) - new Date(b.hour))}
+                  />
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
@@ -82,6 +110,8 @@ Month.propTypes = {
     })),
   ]).isRequired,
   onDayClick: PropTypes.func.isRequired,
+  nextMonthHandler: PropTypes.func.isRequired,
+  prevMonthHandler: PropTypes.func.isRequired,
   selectedDay: PropTypes.shape({
     weekDay: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6, '']),
     month: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, '']),
@@ -118,6 +148,16 @@ Month.propTypes = {
       icon: PropTypes.string,
     }), PropTypes.oneOf([null])]),
   })).isRequired,
+  months: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+      value: PropTypes.string,
+    })),
+  ]).isRequired,
 };
 
 export default Month;

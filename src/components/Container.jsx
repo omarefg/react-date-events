@@ -27,6 +27,8 @@ const Container = (props) => {
     onReminderDateChange,
     cities,
     includeWeather,
+    nextMonthHandler,
+    prevMonthHandler,
   } = props;
 
   return (
@@ -60,6 +62,9 @@ const Container = (props) => {
         onDayClick={onDayClick}
         selectedDay={selectedDay}
         reminders={reminders}
+        nextMonthHandler={nextMonthHandler}
+        prevMonthHandler={prevMonthHandler}
+        months={months}
       />
     </div>
   );
@@ -125,6 +130,8 @@ Container.propTypes = {
   onReminderColorChange: PropTypes.func.isRequired,
   onReminderAreaClose: PropTypes.func.isRequired,
   onReminderDateChange: PropTypes.func.isRequired,
+  nextMonthHandler: PropTypes.func.isRequired,
+  prevMonthHandler: PropTypes.func.isRequired,
   months: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.arrayOf(PropTypes.shape({

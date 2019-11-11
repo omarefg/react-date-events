@@ -5,7 +5,7 @@ import format from '../utils/format';
 
 import styles from '../styles/Day.module.scss';
 
-const { getFormattedHour } = format;
+const { getFormattedHour, validateIsSelected, validateToday } = format;
 
 
 const Day = (props) => {
@@ -19,14 +19,18 @@ const Day = (props) => {
     year,
     date,
     reminders,
+    selectedDay,
   } = props;
 
   const cx = classNames.bind(styles);
+
 
   const icon = cx({
     day__container: true,
     'day__container--is-weekend': weekDay === 0 || weekDay === 6,
     'day__container--otherMonth': isOtherMonth,
+    'day__container-is-today': validateToday(date),
+    'day__container-is-selected': validateIsSelected(selectedDay, date),
   });
 
   const onClick = () => onDayClick({
@@ -107,6 +111,22 @@ Day.propTypes = {
       icon: PropTypes.string,
     }), PropTypes.oneOf([null])]),
   })).isRequired,
+  selectedDay: PropTypes.shape({
+    weekDay: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6, '']),
+    month: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, '']),
+    day: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, '']),
+    year: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([''])]),
+    date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.oneOf([''])]),
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    reminders: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+      description: PropTypes.string,
+      hour: PropTypes.instanceOf(Date),
+    })),
+  }).isRequired,
 };
 
 export default Day;

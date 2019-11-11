@@ -61,10 +61,23 @@
 }
 
 .day__container--is-weekend {
-    color: #2f74b5;
     background-color: #f2f2f2;
+
+    span {
+        color: #2f74b5;
+    }
 }
 
 .day__container--otherMonth {
-    color: #a5a5a5;
+    span {
+        color: #a5a5a5;
+    }
+}
+
+.day__container-is-today {
+    background-color: #2ecc71;
+}
+
+.day__container-is-selected {
+    background-color: rgb(255, 255, 149);
 }

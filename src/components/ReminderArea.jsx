@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import Reminder from './Reminder';
 import Add from '../icons/Add';
 import CloseReminderArea from '../icons/CloseReminderArea';
+import format from '../utils/format';
 
 import styles from '../styles/ReminderArea.module.scss';
+
+const { addNumberSuffix } = format;
 
 const ReminderArea = (props) => {
   const {
@@ -54,36 +57,37 @@ const ReminderArea = (props) => {
         className={styles['reminder-area__title']}
       >
         <h1>{weekDays[weekDay]}</h1>
-        <h3>{`${day} - ${months[month]}`}</h3>
+        <h3>{`${months[month]} - ${day}${addNumberSuffix(day)}`}</h3>
       </div>
       <div
         className={styles['reminder-area__reminders-container']}
       >
-        {reminders
-          .filter(({ date: reminderDate }) => reminderDate.getTime() === date.getTime())
-          .map((reminder) => (
-            <Reminder
-              key={reminder.id}
-              hour={reminder.hour}
-              title={reminder.title}
-              hourSelectValues={hourSelectValues}
-              date={date}
-              onReminderTitleChange={onReminderTitleChange}
-              onReminderHourChange={onReminderHourChange}
-              onReminderDelete={onReminderDelete}
-              id={reminder.id}
-              includeCity={includeCity}
-              onReminderCityChange={onReminderCityChange}
-              city={reminder.city}
-              color={reminder.color}
-              onReminderColorChange={onReminderColorChange}
-              reminderDate={reminder.date}
-              onReminderDateChange={onReminderDateChange}
-              cities={cities}
-              includeWeather={includeWeather}
-              weather={reminder.weather}
-            />
-          ))}
+        {reminders.length
+          ? reminders
+            .filter(({ date: reminderDate }) => reminderDate.getTime() === date.getTime())
+            .map((reminder) => (
+              <Reminder
+                key={reminder.id}
+                hour={reminder.hour}
+                title={reminder.title}
+                hourSelectValues={hourSelectValues}
+                date={date}
+                onReminderTitleChange={onReminderTitleChange}
+                onReminderHourChange={onReminderHourChange}
+                onReminderDelete={onReminderDelete}
+                id={reminder.id}
+                includeCity={includeCity}
+                onReminderCityChange={onReminderCityChange}
+                city={reminder.city}
+                color={reminder.color}
+                onReminderColorChange={onReminderColorChange}
+                reminderDate={reminder.date}
+                onReminderDateChange={onReminderDateChange}
+                cities={cities}
+                includeWeather={includeWeather}
+                weather={reminder.weather}
+              />
+            )) : <h2>Add a Reminder</h2>}
       </div>
       <button
         className={styles['reminder-area__add-button']}
@@ -91,7 +95,7 @@ const ReminderArea = (props) => {
         onClick={addReminder}
       >
         <Add
-          size="2.5em"
+          size="4em"
         />
       </button>
     </div>

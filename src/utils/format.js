@@ -14,8 +14,44 @@ const getFormattedHour = (hour) => {
   return '';
 };
 
+const validateIsSelected = (selectedDay, actualDay) => {
+  if (selectedDay.date) {
+    const selectedDayYear = selectedDay.date.getFullYear();
+    const selectedDayMonth = selectedDay.date.getMonth();
+    const selectedDayDay = selectedDay.date.getDate();
+    const actualDayYear = actualDay.getFullYear();
+    const actualDayMonth = actualDay.getMonth();
+    const actualDayDay = actualDay.getDate();
+
+    return `${selectedDayYear}-${selectedDayMonth}-${selectedDayDay}` === `${actualDayYear}-${actualDayMonth}-${actualDayDay}`;
+  }
+
+  return false;
+};
+
+const validateToday = (actualDay) => {
+  const selectedDay = new Date();
+  return validateIsSelected({ date: selectedDay }, actualDay);
+};
+
+const addNumberSuffix = (num) => {
+  if (num === 1) {
+    return 'st';
+  }
+  if (num === 2) {
+    return 'nd';
+  }
+  if (num === 3) {
+    return 'rd';
+  }
+  return 'th';
+};
+
 const format = {
   getFormattedHour,
+  validateIsSelected,
+  addNumberSuffix,
+  validateToday,
 };
 
 export default format;
