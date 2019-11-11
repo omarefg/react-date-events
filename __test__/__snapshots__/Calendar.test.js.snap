@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar component Match Snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="reminder-area__container"
+  >
+    <button
+      className="reminder-area__close-button"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        height="2.5em"
+        viewBox="0 0 455 455"
+        width="2.5em"
+      >
+        <path
+          d="M227.5 0C101.855 0 0 101.855 0 227.5S101.855 455 227.5 455 455 353.145 455 227.5 353.145 0 227.5 0zm-28.024 355.589l-21.248-21.178L284.791 227.5 178.228 120.589l21.248-21.178L327.148 227.5 199.476 355.589z"
+        />
+      </svg>
+    </button>
+    <div
+      className="reminder-area__title"
+    >
+      <h1 />
+      <h3>
+        undefined - th
+      </h3>
+    </div>
+    <div
+      className="reminder-area__reminders-container"
+    >
+      <h2>
+        Add a Reminder
+      </h2>
+    </div>
+    <button
+      className="reminder-area__add-button"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        height="4em"
+        viewBox="0 0 24 24"
+        width="4em"
+      >
+        <path
+          d="M22 1041.4c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10 10 4.477 10 10z"
+          fill="#27ae60"
+          transform="translate(0 -1028.4)"
+        />
+        <path
+          d="M22 1040.4c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10 10 4.477 10 10z"
+          fill="#2ecc71"
+          transform="translate(0 -1028.4)"
+        />
+        <path
+          d="M6 1042.4h5v5h2v-5h5v-2h-5v-5h-2v5H6v2z"
+          fill="#27ae60"
+          transform="translate(0 -1028.4)"
+        />
+        <path
+          d="M6 1041.4h5v5h2v-5h5v-2h-5v-5h-2v5H6v2z"
+          fill="#ecf0f1"
+          transform="translate(0 -1028.4)"
+        />
+      </svg>
+    </button>
+  </div>
+  <div>
+    <div
+      className="month__menu-container"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Previous Month
+      </button>
+      <h3>
+        November
+         
+        -
+         
+        2019
+      </h3>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Next Month
+      </button>
+    </div>
+    <table
+      className="container__table"
+    >
+      <thead>
+        <tr
+          className="week-days__container"
+        >
+          <th>
+            Sunday
+          </th>
+          <th>
+            Monday
+          </th>
+          <th>
+            Tuesday
+          </th>
+          <th>
+            Wednesday
+          </th>
+          <th>
+            Thursday
+          </th>
+          <th>
+            Friday
+          </th>
+          <th>
+            Saturday
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</div>
+`;
