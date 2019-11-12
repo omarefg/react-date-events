@@ -40,6 +40,7 @@ or
 ```jsx
     import React from 'react'
     import Calendar from '@omarefg/react-date-events'
+    import '@omarefg/react-date-events/lib/main.css'
 
     const Foo = () => {
         return (
