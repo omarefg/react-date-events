@@ -4,9 +4,10 @@ __example__
 src
 .babelrc
 .eslintignore
-.eslint
+.eslintrc
 postcss.config.js
 webpack.config.js
 webpack.dev.js
 yarn-error.log
 yarn.lock
+example
